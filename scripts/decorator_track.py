@@ -1,6 +1,7 @@
 import pickle
 from functools import wraps
 import sys,types
+import shutil
 n = 0
 indent = 0
 import_name = 'decorate_.py'
@@ -61,6 +62,7 @@ def add_decorator(source_dir=None, print_arg=True, print_arg_once=True, print_on
         print (top, folders, files)
         for file in files:
             filepath = os.path.join(top,file)
+            [shutil.copy(__file__, os.path.join(top, i ,import_name)) for i in folders]
             shutil.copy(filepath,filepath+'.d_bak')
             if filepath == __file__ or file == 'xml2obj.py':
                 continue
@@ -102,11 +104,8 @@ def add_decorator(source_dir=None, print_arg=True, print_arg_once=True, print_on
 
 
 if __name__ == '__main__':
-    import shutil
     print os.getcwd()
     print __file__
     if os.path.basename(__file__) != import_name:
-        shutil.copy(__file__, import_name)
         add_decorator(os.getcwd(),print_arg=True, print_arg_once=True, print_once=False)
-
 
