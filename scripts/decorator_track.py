@@ -10,7 +10,7 @@ indent = 0
 import_name = 'decorate_.py'
 postfix_bak = '.d_bak'
 list = []
-def print_name(print_arg=True, print_arg_once=True, print_once=False):
+def print_name(print_arg=True, print_arg_once=True, print_once=False, print_result=True):
     """ general decorator
     print arg: print arg and result
     print arg once: print arg and result once
@@ -44,10 +44,11 @@ def print_name(print_arg=True, print_arg_once=True, print_once=False):
             #f = sys.exc_info()[2].tb_frame.f_back
             #print f.f_code
             result = func(*args, **kwargs)
-            if print_result_once:
-                print '*'*indent,'Ret of  %s: ' % (func.__module__+'.'+func.__name__), result
-            elif print_result:
-                print '*'*indent,'Ret of  %s: ' % (func.__module__+'.'+func.__name__), result
+            if print_result:
+                if print_result_once:
+                    print '*'*indent,'Ret of  %s: ' % (func.__module__+'.'+func.__name__), result
+                elif print_result:
+                    print '*'*indent,'Ret of  %s: ' % (func.__module__+'.'+func.__name__), result
             if indent == 1:
                 print '\n'
             indent -=1
@@ -69,7 +70,7 @@ def remove_decorator(source_dir=None):
             if file.endswith(postfix_bak):
                 shutil.move(filepath,filepath[:-1*len(postfix_bak)])
 
-def add_decorator(source_dir=None, print_arg=True, print_arg_once=True, print_once=False, max_levl=0,excludes=None):
+def add_decorator(source_dir=None, print_arg=True, print_arg_once=True, print_once=False, max_levl=0,excludes=None, print_result=True):
     # source_dir='/home/jessiex/git/stress/scripts'
     if source_dir == None:
         source_dir = os.getcwd()
@@ -121,8 +122,8 @@ def add_decorator(source_dir=None, print_arg=True, print_arg_once=True, print_on
                     file_index = content[history_index:].find(line)
                     file_index = file_index + history_index
                     if line.strip().startswith('def '):
-                        decorator_line += indent+'@print_name(print_arg=%s, print_arg_once=%s, print_once=%s)\n' % \
-                                                 (str(print_arg), str(print_arg_once), str(print_once))
+                        decorator_line += indent+'@print_name(print_arg=%s, print_arg_once=%s, print_once=%s, print_result=%s)\n' % \
+                                                 (str(print_arg), str(print_arg_once), str(print_once), str(print_result))
                     content = content[:file_index]+decorator_line+content[file_index:]
                     history_index = file_index
 
@@ -135,5 +136,6 @@ if __name__ == '__main__':
     print os.getcwd()
     print __file__
     if os.path.basename(__file__) != import_name:
-        add_decorator(os.getcwd(),print_arg=True, print_arg_once=True, print_once=False, max_levl=0, excludes=['message.py','loggerhelper.py','errors.py'])
+        add_decorator(os.getcwd(),print_arg=True, print_arg_once=True, print_once=False, max_levl=0, excludes=['message.py','loggerhelper.py','errors.py'],
+        print_result=True)
 
