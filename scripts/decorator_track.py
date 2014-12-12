@@ -11,7 +11,11 @@ import_name = 'decorate_.py'
 postfix_bak = '.d_bak'
 list = []
 def print_name(print_arg=True, print_arg_once=True, print_once=False):
-    """ general decorator"""
+    """ general decorator
+    print arg: print arg and result
+    print arg once: print arg and result once
+    print once:  do not print duplicate arg and result
+    """
     def decorate(func):
         @wraps(func)
         def wrapper(*args, **kwargs):
@@ -32,7 +36,7 @@ def print_name(print_arg=True, print_arg_once=True, print_once=False):
             else:
                 new_item = simple_item
             if print_once and new_item in list:
-                pass
+                print_result = False
             else:
                 print '*'*indent,'Calling',new_item
                 list.append(new_item)
