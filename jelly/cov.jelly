@@ -1,0 +1,25 @@
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define">
+<j:set var="coberturaAction" value="${it.coberturaAction}" />
+<j:set var="coberturaResult" value="${coberturaAction.result}" />
+<ul><li>Coverage Report</li></ul>
+<j:if test="${junitResultList.isEmpty()==true}">
+<j:if test="${coberturaResult!=null}">
+
+          <ul>  <table border="1px" class="pane">
+                <tr>
+                    <td>Name</td>
+                    <j:forEach var="metric" items="${coberturaResult.metrics}">
+                        <td>${metric.name}</td>
+                    </j:forEach>
+                </tr>
+                <tr>
+                    <td>${coberturaResult.name}</td>
+                    <j:forEach var="metric" items="${coberturaResult.metrics}">
+                        <td data="${coberturaResult.getCoverage(metric).percentageFloat}">${coberturaResult.getCoverage(metric).percentage}%
+                            (${coberturaResult.getCoverage(metric)})
+                        </td>
+                    </j:forEach>
+                </tr>
+            </table>
+</ul> </j:if></j:if>
+</j:jelly>

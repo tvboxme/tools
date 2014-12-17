@@ -1,0 +1,42 @@
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define">
+
+<j:set var="junitResultList" value="${it.JUnitTestResult}" />
+
+
+
+<j:getStatic var="resultFailure" field="FAILURE" className="hudson.model.Result"/>
+<j:getStatic var="resultAbort" field="ABORTED" className="hudson.model.Result"/>
+
+ <TR><TD class="bg1" colspan="2"><B><font color="#0B610B">
+Pytest Result</font></B><hr size="2" width="100%" align="center"/></TD></TR>
+
+<j:if test="${build.result==resultFailure}">
+<j:if test="${junitResultList.isEmpty()==true}">
+<j:if test="${coberturaResult==null}">
+<TABLE width="100%" cellpadding="0" cellspacing="0">
+<TR><TD class="bg1"><B><li>No test result generated, please check console output below</li></B></TD></TR>
+<j:forEach var="line" items="${build.getLog(100)}"><TR><TD class="console">${line}</TD></TR></j:forEach>
+</TABLE>
+<BR/>
+</j:if>
+</j:if>
+</j:if>
+<j:if test="${junitResultList.isEmpty()!=true}">
+  <TABLE wiidth="100%">
+
+    <j:forEach var="junitResult" items="${it.JUnitTestResult}">
+      <j:forEach var="packageResult" items="${junitResult.getChildren()}">
+        <TR><TD class="bg2" colspan="2"><UL> Name: ${packageResult.getName()} Failed: ${packageResult.getFailCount()} test(s), Passed: ${packageResult.getPassCount()} test(s), Skipped: ${packageResult.getSkipCount()} test(s), Total: ${packageResult.getPassCount()+packageResult.getFailCount()+packageResult.getSkipCount()} test(s)</UL></TD></TR>
+        <j:forEach var="failed_test" items="${packageResult.getFailedTests()}">
+          <TR bgcolor="white"><TD class="test_failed" colspan="2"><B><UL><li>Failed: ${failed_test.getFullName()} </li></UL></B></TD></TR>
+
+	<TR><TD><UL>${failed_test.errorStackTrace}</UL></TD></TR>
+	
+
+        </j:forEach>
+      </j:forEach> 
+    </j:forEach>  
+  </TABLE>	
+<BR/>
+</j:if>
+</j:jelly>

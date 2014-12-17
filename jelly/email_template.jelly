@@ -1,0 +1,44 @@
+	<html>
+	<body>
+	<table>
+<tr>
+	    <td><h3><font color="#0000FF">$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS</font></h3></td>
+	</tr>
+	<tr>
+	    <td><br/><b><font color="#0B610B">Build Information:</font></b><hr size="2" width="100%" align="center"/></td>
+	 </tr>
+	<tr>
+	    <td>
+
+        <ul><li>Project Name - ${PROJECT_NAME}</li></ul>
+           <ul>     <li>Test Result URL- <a href="${BUILD_URL}/testReport">${BUILD_URL}testReport</a></li></ul>
+
+            <ul> <li>Code style Report URL - <a href="${BUILD_URL}/violations">${BUILD_URL}violations</a></li> </ul>
+		${JELLY_SCRIPT,template="cov"}
+	    </td>
+	</tr>
+	<tr>
+	    <td><b><font color="#0B610B">Logs:</font></b><hr size="2" width="100%" align="center"/></td>
+	</tr>
+	<tr>
+	    <td>
+		<ul> <li>
+		        ${CAUSE}</li>
+		</ul>
+
+  <ul>  <li> Build change log </li> </ul>
+ <ul>   ${CHANGES_SINCE_LAST_SUCCESS, reverse=true, format="Changes for Build #%n:<br/>%c<br/>", showPaths=true, changesFormat="<pre>[%a]<br/>%m</pre>", pathFormat="&nbsp;&nbsp;&nbsp;&nbsp;%p"}
+  </ul>
+
+
+${JELLY_SCRIPT,template="test_result"}
+	    </td>
+	</tr>
+	<tr><td>
+
+	</td>
+
+	</tr>
+	</table>
+	</body>
+	</html>
