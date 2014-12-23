@@ -516,3 +516,7 @@ set iskeyword -=.
 
 " less 自动更新
 autocmd BufWritePost *.less :!lessc % > %:p:r.css
+
+"自动加载文件改动
+set autoread
+
