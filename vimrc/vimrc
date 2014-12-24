@@ -28,9 +28,12 @@ let mapleader = ','
 let g:mapleader = ','
 
 " 开启语法高亮
+
 syntax on
-
-
+set fencs=utf-8,gbk,chinese
+set fileencodings=utf-8,gb18030,gbk,gb2312
+set termencoding=utf-8
+set encoding=prc
 " install Vundle bundles
 if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
