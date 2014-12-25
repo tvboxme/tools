@@ -1,0 +1,24 @@
+===============高亮python关键字==============
+1.修改语法高亮文件
+locate python.vim文件，找到路径如
+/usr/share/vim/vim72/syntax/python.vim
+将"    let python_highlight_all = 1
+前面的引号去掉，可支持内置函数，数字，空格，异常的语法高亮。
+
+2. 将self加进
+syn keyword pythonBuiltin     reversed sorted sum self
+这一行最后。
+
+3. 将标点符号加进高亮
+
+在HiLink定义前加入一行：
+syn match pythonOper    "=/|+/|-/|*/|{/|}/|[/|]/|(/|)/|/./|,"
+在尾巴上加入：
+HiLink pythonOper            Operator " SpecialKey
+这时，python语法基本比较鲜艳了。"
+
+================vim乱码解决==================
+vi /etc/environment
+vi /etc/default/locale
+查看系统编码设定有没有冲突的项，比如说langugage是english，其他项却是zh-cn.GBK之类。
+在.vimrc文件里面设定相应fileencode格式，参看vimrc。

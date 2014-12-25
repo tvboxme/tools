@@ -49,7 +49,8 @@ filetype plugin indent on
 "在项目顶层目录执行ctags -R生成tags到当前目录, -f 可指定ctags生成目录, *.py可
 "指定只对某一后缀文件生成tags
 "打开源文件，在命令模式中执行如：set tags=../../tags，将相应的tags加入
-"在函数名上按 <C-]> 即可转到函数定义，按 <C-o> 可以返回调用地址
+"在函数名上按 <C-]> 即可转到函数定义，按 <C-t> 可以返回调用地址, 按<C-o>也可以
+"，返回不局限于调用
 "{{
 let g:ctags_path='/usr/bin/ctags'   "ctag执行文件路径
 let g:ctags_statusline=1            " 在状态栏显示函数名
