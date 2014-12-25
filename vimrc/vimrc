@@ -58,8 +58,8 @@ let g:ctags_args=1             " ctags程序的附加参数
 let generate_tags=1                " 对支持的文件类型自动运行生成脚本
 let g:ctags_regenerate=1           " 自动重建tag 数据库
 let g:ctags_title=1                " 在标题显示函数名
-set tags+=\home\www\tags       "ctags生成路径"
-set tags+=~\git\tags                    "catgs生成路径"
+set tags+=/home/www/tags       "ctags生成路径"
+set tags+=~/git/tags                    "catgs生成路径"
 "}}
 
 
