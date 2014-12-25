@@ -45,6 +45,23 @@ filetype plugin indent on
 
 "以下配置有详细说明，一些特性不喜欢可以直接注解掉
 
+"ctags配置 
+"在项目顶层目录执行ctags -R生成tags到当前目录, -f 可指定ctags生成目录, *.py可
+"指定只对某一后缀文件生成tags
+"打开源文件，在命令模式中执行如：set tags=../../tags，将相应的tags加入
+"在函数名上按 <C-]> 即可转到函数定义，按 <C-o> 可以返回调用地址
+"{{
+let g:ctags_path='/usr/bin/ctags'   "ctag执行文件路径
+let g:ctags_statusline=1            " 在状态栏显示函数名
+let g:ctags_args=1             " ctags程序的附加参数
+let generate_tags=1                " 对支持的文件类型自动运行生成脚本
+let g:ctags_regenerate=1           " 自动重建tag 数据库
+let g:ctags_title=1                " 在标题显示函数名
+set tags+=\home\www\tags       "ctags生成路径"
+set tags+=~\git\tags                    "catgs生成路径"
+"}}
+
+
 "set guifont=Monaco:h20          " 字体 && 字号
 
 " history存储容量
