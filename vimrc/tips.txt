@@ -17,7 +17,7 @@ syn match pythonOper    "=/|+/|-/|*/|{/|}/|[/|]/|(/|)/|/./|,"
 HiLink pythonOper            Operator " SpecialKey
 这时，python语法基本比较鲜艳了。"
 
-================vim乱码解决==================
+===============vim中文乱码解决==================
 vi /etc/environment
 vi /etc/default/locale
 查看系统编码设定有没有冲突的项，比如说langugage是english，其他项却是zh-cn.GBK之类。
