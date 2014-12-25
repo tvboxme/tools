@@ -32,8 +32,8 @@ syntax on
 
 
 " install Vundle bundles
-if filereadable(expand("~/.vimrc.bundles"))
-  source ~/.vimrc.bundles
+if filereadable(expand("~/.vim/vimrc.bundles"))
+  source ~/.vim/vimrc.bundles
 endif
 
 " ensure ftdetect et al work by including this after the Vundle stuff
@@ -291,10 +291,10 @@ endif
 " 主要按键重定义
 
 " 关闭方向键, 强迫自己用 hjkl
-map <Left> <Nop>
-map <Right> <Nop>
-map <Up> <Nop>
-map <Down> <Nop>
+"map <Left> <Nop>
+"map <Right> <Nop>
+"map <Up> <Nop>
+"map <Down> <Nop>
 
 "Treat long lines as break lines (useful when moving around in them)
 "se swap之后，同物理行上线直接跳
@@ -385,8 +385,8 @@ noremap <silent><leader>/ :nohls<CR>
 " --------tab/buffer相关
 
 "Use arrow key to change buffer"
-noremap <left> :tabN<CR>
-noremap <right> :tabn<CR>
+noremap <C-left> :tabN<CR>
+noremap <C-right> :tabn<CR>
 
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
