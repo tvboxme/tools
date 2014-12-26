@@ -336,18 +336,35 @@ set pastetoggle=<F5>            "    when in insert mode, press <F5> to go to
 au InsertLeave * set nopaste
 
 nnoremap <F6> :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
-
-"Smart way to move between windows 分屏窗口移动
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
-
-" Go to home and end using capitalized directions
-noremap H ^
-noremap L $
-
-
+"
+""Smart way to move between windows 分屏窗口移动
+"map <C-j> <C-W>j
+"map <C-k> <C-W>k
+"map <C-h> <C-W>h
+"map <C-l> <C-W>l
+"
+"" Go to home and end using capitalized directions
+"noremap H ^
+"noremap L $
+""
+"对于map而言，可能有这么几种前缀
+"
+"nore
+"表示非递归，见下面的介绍
+"Recursive Mapping
+"递归的映射。其实很好理解，也就是如果键a被映射成了b，c又被映射成了a，如果映射是递归的，那么c就被映射成了b。"
+"n
+"表示在普通模式下生效
+"
+"v
+"表示在可视模式下生效
+"
+"i
+"表示在插入模式下生效
+"
+"c
+"表示在命令行模式下生效
+"
 "Map ; to : and save a million keystrokes
 " ex mode commands made easy 用于快速进入命令行
 nnoremap ; :
@@ -359,10 +376,12 @@ nnoremap ; :
 "cnoremap <C-a> <Home>
 "cnoremap <C-e> <End>
 
+"special space, for easier format code
+
+nnoremap <space> i<space><ESC>
 " 搜索相关
 
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
-map <space> /\v
 " 进入搜索Use sane regexes"
 "nnoremap / /\v
 "vnoremap / /\v
