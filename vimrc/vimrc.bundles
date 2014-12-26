@@ -7,8 +7,6 @@
 "package dependence:  ctags
 "python dependence:  pep8, pyflake
 "
-"非兼容vi模式。去掉讨厌的有关vi一致性模式，避免以前版本的一些bug和局限
-set nocompatible
 " configure Vundle
 filetype off " required! turn off
 set rtp+=~/.vim/bundle/vundle/
@@ -65,7 +63,8 @@ if !empty(glob("~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_
     let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"
 endif
 
-
+"MiniBufExpl
+"Bundle 'fholgado/minibufexpl.vim'
 " 直接触发自动补全
 let g:ycm_key_invoke_completion = '<C-Space>'
 " 黑名单,不启用
@@ -312,7 +311,6 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 "let g:miniBufExplCycleArround=1
 
 " 默认方向键左右可以切换buffer
-nnoremap <TAB> :MBEbn<CR>
 noremap <leader>bn :MBEbn<CR>
 noremap <leader>bp :MBEbp<CR>
 noremap <leader>bd :MBEbd<CR>

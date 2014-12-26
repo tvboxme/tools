@@ -77,6 +77,7 @@ filetype plugin on
 "启动自动补全
 filetype plugin indent on
 
+set nocompatible "与vi不兼容
 set shortmess=atI       " 启动的时候不显示那个援助索马里儿童的提示
 
 " 备份,到另一个位置. 防止误删, 目前是取消备份
@@ -364,7 +365,11 @@ nnoremap <F6> :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
 "
 "c
 "表示在命令行模式下生效
+"unmap
+"unmap后面跟着一个按键组合，表示删除这个映射。
 "
+":unmap c
+""
 "Map ; to : and save a million keystrokes
 " ex mode commands made easy 用于快速进入命令行
 nnoremap ; :
@@ -526,10 +531,10 @@ endif
 
 " theme主题
 set background=dark
-colorscheme solarized
+"colorscheme solarized
 set t_Co=256
 
-"colorscheme molokai
+colorscheme molokai
 "colorscheme desert
 
 "设置标记一列的背景颜色和数字一行颜色一致
