@@ -378,7 +378,7 @@ nnoremap ; :
 
 "special space, for easier format code
 
-nnoremap <space> i<space><ESC>
+nnoremap <space> a
 " 搜索相关
 
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
@@ -433,10 +433,12 @@ nnoremap <leader>v V`}
 " w!! to sudo & write a file
 cmap w!! w !sudo tee >/dev/null %
 
-" kj 替换 Esc
-inoremap kj <Esc>
+" qw 替换 Esc
+inoremap qw <Esc>
+"禁用recording
+nnoremap <q> <Nop>
 
-" 滚动Speed up scrolling of the viewport slightly
+"滚动Speed up scrolling of the viewport slightly
 nnoremap <C-e> 2<C-e>
 nnoremap <C-y> 2<C-y>
 
