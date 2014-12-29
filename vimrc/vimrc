@@ -507,7 +507,9 @@ endfunc
 
 " F10 to run python script
 nnoremap <buffer> <F10> :exec '!python' shellescape(@%, 1)<cr>
-
+":copen打开一个面板跟踪窗,然后"grep -r 函数名 *.py"之后,有下面的map即可实现f12跳转至
+"相应文件。
+nnoremap <F12> <ESC>:.cc<CR><C-W>p
 "==========================================
 " Theme Settings  主题设置
 "==========================================
