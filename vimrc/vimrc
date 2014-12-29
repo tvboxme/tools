@@ -383,7 +383,7 @@ nnoremap ; :
 
 "special space, for easier format code
 
-nnoremap <space> a
+nnoremap <space> i
 " 搜索相关
 
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
