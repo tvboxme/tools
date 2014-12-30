@@ -7,8 +7,10 @@ usage: call ihms function
 from selenium.common.exceptions import NoSuchElementException,ElementNotVisibleException,UnexpectedAlertPresentException
 import traceback
 import time
+import datetime
 from selenium import webdriver
 import re
+import click
 
 LOGIN_PAGE = "http://bjdws.synnex.org/ihms/thirdpart/login.jsp"
 
@@ -155,4 +157,39 @@ def ihms(browser=None, detail='', end_date_tuple=None, username='', pw='' , star
                 break
     return browser
 
-ihms(detail='Support ticket', end_date_tuple=(2014,12,25), username='Jessie Xiong', pw='000000' , start_date_tuple=(2014,12,10))
+
+def fmt_to_date_tuple(ctx, param, value):
+    """TODO: Docstring for fmt_to_date_tuple.
+
+    """
+    if not value:
+        raise click.BadParameter('Default value for <%s> not implemented.' % param.name)
+    try:
+        time_obj = datetime.datetime.strptime(value, '%Y/%m/%d')
+        return time_obj.timetuple()[:3]
+    except ValueError:
+        raise click.BadParameter('%s should in FMT: YYYY/MM/DD' % param.name)
+
+#ihms(detail='Support ticket', end_date_tuple=(2014,12,25), username='Jessie Xiong', pw='000000' , start_date_tuple=(2014,12,10))
+@click.command()
+@click.argument('username', metavar='<username>')
+@click.argument('password', metavar='<password>')
+@click.argument('detail', metavar='<detail>')
+@click.option('--start', '-s', help='Start date. FMT: YYYY/MM/DD', callback=fmt_to_date_tuple)
+@click.option('--end', '-e', help='End date. FMT: YYYY/MM/DD', callback=fmt_to_date_tuple)
+def main(username, password, detail, start, end):
+    """ IHMS fill function
+
+    Be lazy, be happy.
+    """
+    param = {
+            'username': username,
+            'pw': password,
+            'detail': detail,
+            'start_date_tuple': start,
+            'end_date_tuple': end
+            }
+    ihms(**param)
+
+if __name__ == '__main__':
+    main()
