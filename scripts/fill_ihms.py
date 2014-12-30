@@ -155,3 +155,4 @@ def ihms(browser=None, detail='', end_date_tuple=None, username='', pw='' , star
                 break
     return browser
 
+ihms(detail='Support ticket', end_date_tuple=(2014,12,25), username='Jessie Xiong', pw='000000' , start_date_tuple=(2014,12,10))
