@@ -170,7 +170,7 @@ def fmt_to_date_tuple(ctx, param, value):
     except ValueError:
         raise click.BadParameter('%s should in FMT: YYYY/MM/DD' % param.name)
 
-#ihms(detail='Support ticket', end_date_tuple=(2014,12,25), username='Jessie Xiong', pw='000000' , start_date_tuple=(2014,12,10))
+
 @click.command()
 @click.argument('username', metavar='<username>')
 @click.argument('password', metavar='<password>')
@@ -192,4 +192,5 @@ def main(username, password, detail, start, end):
     ihms(**param)
 
 if __name__ == '__main__':
+    #ihms(detail='Support ticket', end_date_tuple=(2014,12,25), username='Jessie Xiong', pw='000000' , start_date_tuple=(2014,12,10))
     main()
